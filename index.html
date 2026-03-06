@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Video Enhancer</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+h1{
+margin-top:40px;
+font-size:40px;
+}
+
+.upload-box{
+border:2px dashed #444;
+padding:40px;
+width:80%;
+max-width:500px;
+margin:auto;
+margin-top:40px;
+border-radius:10px;
+}
+
+button{
+background:#ff004f;
+border:none;
+padding:14px 30px;
+color:white;
+font-size:18px;
+cursor:pointer;
+border-radius:6px;
+margin-top:20px;
+}
+
+button:hover{
+background:#ff2e6f;
+}
+
+video{
+margin-top:30px;
+width:80%;
+max-width:700px;
+border-radius:10px;
+}
+
+.download{
+display:none;
+margin-top:20px;
+}
+
+.adbox{
+margin-top:40px;
+background:#1a1a1a;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>AI Video Enhancer</h1>
+
+<p>Upload your video and enhance it with AI</p>
+
+<div class="upload-box">
+
+<input type="file" id="videoUpload">
+
+<br>
+
+<button onclick="enhanceVideo()">Enhance Video</button>
+
+</div>
+
+<video id="preview" controls></video>
+
+<br>
+
+<a id="downloadBtn" class="download">
+<button>Download Enhanced Video</button>
+</a>
+
+<div class="adbox">
+
+<!-- Adsterra ad code paste here -->
+
+<p>Your Ad Here</p>
+
+</div>
+
+<script>
+
+function enhanceVideo(){
+
+let file=document.getElementById("videoUpload").files[0];
+
+if(!file){
+
+alert("Please upload a video");
+
+return;
+
+}
+
+let video=document.getElementById("preview");
+
+video.src=URL.createObjectURL(file);
+
+document.getElementById("downloadBtn").href=video.src;
+
+document.getElementById("downloadBtn").style.display="inline";
+
+alert("AI Enhancement Completed!");
+
+}
+
+</script>
+
+</body>
+</html>
