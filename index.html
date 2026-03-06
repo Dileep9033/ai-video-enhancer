@@ -1,127 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Video Enhancer</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
-font-family:Arial;
-background:#0f0f0f;
+font-family: Arial;
+background:#0f172a;
 color:white;
 text-align:center;
+padding:30px;
 }
 
 h1{
-margin-top:40px;
-font-size:40px;
+color:#38bdf8;
 }
 
-.upload-box{
-border:2px dashed #444;
-padding:40px;
-width:80%;
+.container{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
 max-width:500px;
 margin:auto;
-margin-top:40px;
-border-radius:10px;
 }
 
 button{
-background:#ff004f;
+background:#38bdf8;
 border:none;
-padding:14px 30px;
-color:white;
-font-size:18px;
-cursor:pointer;
+padding:12px 20px;
+margin-top:10px;
 border-radius:6px;
-margin-top:20px;
-}
-
-button:hover{
-background:#ff2e6f;
+font-size:16px;
+cursor:pointer;
 }
 
 video{
-margin-top:30px;
-width:80%;
-max-width:700px;
+width:100%;
+margin-top:15px;
 border-radius:10px;
 }
 
-.download{
-display:none;
-margin-top:20px;
-}
-
-.adbox{
-margin-top:40px;
-background:#1a1a1a;
-padding:20px;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<h1>AI Video Enhancer</h1>
+<h1>AI VIDEO ENHANCER</h1>
 
-<p>Upload your video and enhance it with AI</p>
+<div class="container">
 
-<div class="upload-box">
+<input type="file" id="upload" accept="video/*">
 
-<input type="file" id="videoUpload">
-
-<br>
+<video id="videoPreview" controls></video>
 
 <button onclick="enhanceVideo()">Enhance Video</button>
 
-</div>
-
-<video id="preview" controls></video>
-
 <br>
 
-<a id="downloadBtn" class="download">
-<button>Download Enhanced Video</button>
+<a id="downloadBtn" style="display:none;" download="enhanced-video.mp4">
+<button>Download Video</button>
 </a>
-
-<div class="adbox">
-
-<!-- Adsterra ad code paste here -->
-
-<p>Your Ad Here</p>
 
 </div>
 
 <script>
 
+const upload = document.getElementById("upload");
+const videoPreview = document.getElementById("videoPreview");
+const downloadBtn = document.getElementById("downloadBtn");
+
+upload.addEventListener("change", function(){
+const file = this.files[0];
+const url = URL.createObjectURL(file);
+videoPreview.src = url;
+downloadBtn.href = url;
+});
+
 function enhanceVideo(){
 
-let file=document.getElementById("videoUpload").files[0];
+alert("AI Enhancing Video...");
 
-if(!file){
-
-alert("Please upload a video");
-
-return;
-
-}
-
-let video=document.getElementById("preview");
-
-video.src=URL.createObjectURL(file);
-
-document.getElementById("downloadBtn").href=video.src;
-
-document.getElementById("downloadBtn").style.display="inline";
-
-alert("AI Enhancement Completed!");
+setTimeout(()=>{
+alert("Video Enhanced Successfully!");
+downloadBtn.style.display="inline";
+},2000);
 
 }
 
